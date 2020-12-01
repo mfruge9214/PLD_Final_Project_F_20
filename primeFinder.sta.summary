@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -5.289
+TNS   : -195.686
+
+Type  : Slow 1100mV 85C Model Setup 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -1.933
+TNS   : -47.251
+
+Type  : Slow 1100mV 85C Model Hold 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.284
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.372
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.673
+TNS   : -57.157
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -0.394
+TNS   : -14.792
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -5.326
+TNS   : -181.609
+
+Type  : Slow 1100mV 0C Model Setup 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -2.042
+TNS   : -49.445
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.227
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.282
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.718
+TNS   : -52.240
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -0.394
+TNS   : -14.848
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : -3.331
+TNS   : -101.872
+
+Type  : Fast 1100mV 85C Model Setup 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -0.753
+TNS   : -18.058
+
+Type  : Fast 1100mV 85C Model Hold 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.093
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.795
+TNS   : -38.537
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.147
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : -2.820
+TNS   : -81.895
+
+Type  : Fast 1100mV 0C Model Setup 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : -0.718
+TNS   : -16.744
+
+Type  : Fast 1100mV 0C Model Hold 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.081
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.144
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -0.833
+TNS   : -45.956
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'primeFinder:DUT|PrimeCounter:CalculationTime|tc_reg'
+Slack : 0.145
+TNS   : 0.000
+
+------------------------------------------------------------

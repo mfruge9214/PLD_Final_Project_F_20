@@ -1,0 +1,7 @@
+
+State Machine - |DE1_SOC_golden_top|primeFinder:DUT|PrimeStateMachine:SM_0|state
+Name state.Calculate state.Display state.MSB_Load state.LSB_Load 
+state.LSB_Load 0 0 0 0 
+state.MSB_Load 0 0 1 1 
+state.Display 0 1 0 1 
+state.Calculate 1 0 0 1 
