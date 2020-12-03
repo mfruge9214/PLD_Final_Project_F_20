@@ -8,14 +8,14 @@
 ***************************************/
 
 
-module PrimeCounter(Clock, Reset_n, En, TC, Count);
+module PrimeCounter(Clock, Reset_n, En, Increment, TC, Count);
 	// Initial parameters, can be altered by higher level module
 	parameter width = 32;
 	parameter count_limit = 1000000;
-	parameter increment = 1;
 	parameter rollover = 0;
 	
 	input Clock, En, Reset_n;
+	input [9:0] Increment;
 	
 	output TC;
 	
@@ -26,6 +26,7 @@ module PrimeCounter(Clock, Reset_n, En, TC, Count);
 	assign TC = tc_reg;		// TC high when Count Breaches Count Limit
 	
 	always @(posedge Clock or negedge Reset_n)
+	
 	begin
 		if (!Reset_n) begin
 			Count <= 0;
@@ -44,7 +45,7 @@ module PrimeCounter(Clock, Reset_n, En, TC, Count);
 				end
 			end
 			else if(En && (Count < (count_limit - 1) ) ) begin
-				Count <= Count + increment;
+				Count <= Count + Increment;
 				tc_reg <= 0;
 			end
 			

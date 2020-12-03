@@ -16,9 +16,6 @@ module PrimeStateMachine( clk, SW, KEYS, CountBlockDone, DispSelect, LoadVal, Ne
 	//reg [1:0] next_state;
 	
 	
-	
-	//reg [9:0] led_out;
-	
 	wire Reset;
 	wire LSB_Entry;
 	wire MSB_Entry;
@@ -33,7 +30,6 @@ module PrimeStateMachine( clk, SW, KEYS, CountBlockDone, DispSelect, LoadVal, Ne
 	assign MSB_Entry = KEYS[1];
 	
 	assign NextState = state;
-	//assign LEDR = led_out;
 	
 	always@(posedge clk) begin : StateMachine
 	

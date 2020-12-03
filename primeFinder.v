@@ -54,8 +54,10 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	wire CounterBlockEnable;
 	
 	
-	// Diaplay State Signals
-	reg [ WIDTH - 1 : 0] LargestPrime = 999999;
+	// Display State Signals
+	wire [ WIDTH - 1 : 0] LargestPrime_out;
+	
+	reg [ WIDTH - 1 : 0] LargestPrime = 20'd888888;
 	
 	reg [ WIDTH - 1 : 0] PrimeLimit;
 	
@@ -68,7 +70,7 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	
 	reg [WIDTH - 1 : 0 ] DisplayVal;
 	
-	wire CountFinished;
+	wire PrimeDetermined;
 	
 	////////////////////////////////////////////////////////////////
 	///////////////////////////////////
@@ -114,14 +116,13 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	PrimeStateMachine SM_0(.clk(clk) ,
 									.SW(SW[9:0]),
 									.KEYS(KEYS[3:0]), 
-									.CountBlockDone(CountFinished), 
-									//.LEDR(LEDR[9:0]), 
+									.CountBlockDone(PrimeDetermined),  
 									.DispSelect(DisplaySelect),
 									.LoadVal(InputValue[19:0]),
 									.NextState(state_out[1:0]) 
 									);
 	
-		always@(posedge clk) begin
+	always@(posedge clk) begin
 		if(~state_out[1]) begin
 			PrimeLimit <= InputValue;		// Input States
 		end
@@ -145,7 +146,6 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	wire RTC_Enable;
 	wire RTC_TC;
 	
-	reg temp_Count_Finished;
 	
 	assign RTC_Enable = (state_out[1] & state_out[0] );
 	assign RTC_Reset = KEYS[3];
@@ -156,6 +156,7 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	PrimeCounter CalculationTime( .Clock(clk),
 											.Reset_n(RTC_Reset),
 											.En(RTC_Enable),
+											.Increment(1'b1),
 											.TC(RTC_TC),
 											.Count( )
 											);
@@ -165,10 +166,10 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 	
 	// Always Block to Increment Real Time Counter
 	
-	assign CountFinished = (TimeTaken >= 1000);
+	assign PrimeDetermined = (TimeTaken >= 1000);
 	
-	assign LEDR[7] = CountFinished;
-	//assign RTC_Reset = ~CountFinished;
+//	assign LEDR[7] = PrimeDetermined;
+	//assign RTC_Reset = ~PrimeDetermined;
 	
 	always@(posedge RTC_TC or negedge RTC_Reset) begin
 		if(!RTC_Reset) begin
@@ -181,6 +182,40 @@ module primeFinder(clk, SW, KEYS, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 		
 			
 	end
+	
+	
+	
+//	wire CounterBlockEnable;
+
+///////////////////////////////////////////////////////////////
+
+// Prime Counter Instance and Synchronization
+	
+//	assign CounterBlockEnable = (state_out[1] & state_out[0] );
+//	
+//	PrimeCounterBlock Prime_Counter_Block_0(  .clk(clk),
+//															.PrimeSearchLimit(PrimeLimit),
+//															.Reset_n(Reset_n),
+//															.CounterBlockEnable(CounterBlockEnable),
+//															.LargestPrime(LargestPrime_out),
+//															.Complete(PrimeDetermined)
+//															);
+//															
+//	// Resetting the prime value or Synchronizing the prime in, 
+//															
+//	always@( posedge clk or negedge Reset_n ) begin
+//		if( !Reset_n ) begin
+//			LargestPrime <= 20'd888888;
+//		end
+//		else if(PrimeDetermined) begin
+//			LargestPrime <= LargestPrime_out;
+//		end
+//		else begin
+//			LargestPrime <= LargestPrime;
+//		end
+//	end
+//		
+		
 	
 	
 	
